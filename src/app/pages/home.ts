@@ -3,10 +3,11 @@ import { RouterLink } from '@angular/router';
 import { I18n } from '../core/i18n';
 import { PROJECTS, JOBS, SKILLS } from '../core/projects';
 import { RevealDirective } from '../core/reveal.directive';
+import { LogoMarquee } from '../core/logo-marquee';
 
 @Component({
   selector: 'page-home',
-  imports: [RouterLink, RevealDirective],
+  imports: [RouterLink, RevealDirective, LogoMarquee],
   template: `
     <div class="hero">
       <div class="hero-portrait">
@@ -52,6 +53,8 @@ import { RevealDirective } from '../core/reveal.directive';
         }
       </div>
     </section>
+
+    <logo-marquee />
 
     <section class="block wrap">
       <div class="eyebrow" reveal>{{ i18n.t().sections.experience }}</div>
