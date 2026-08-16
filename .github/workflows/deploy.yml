@@ -41,3 +41,33 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  deploy-server:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx ng build
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
+      - name: Sync frontend build (self-hosted mirror at :8091)
+        run: >
+          rsync -avz --delete -e "ssh -i ~/.ssh/deploy_key"
+          dist/portfolio/browser/ deployer@${{ secrets.DEPLOY_HOST }}:/opt/kamoliddin-cv/public/
+      - name: Sync backend
+        run: >
+          rsync -avz -e "ssh -i ~/.ssh/deploy_key"
+          backend/app.py backend/requirements.txt
+          deployer@${{ secrets.DEPLOY_HOST }}:/opt/kamoliddin-cv/backend/
+      - name: Install deps and restart API
+        run: >
+          ssh -i ~/.ssh/deploy_key deployer@${{ secrets.DEPLOY_HOST }}
+          "cd /opt/kamoliddin-cv/backend && ./.venv/bin/pip install -q -r requirements.txt && sudo systemctl restart kamoliddin-cv-api.service"
