@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 
 interface ToolLogo {
   label: string;
@@ -28,7 +28,7 @@ const TOOLS: ToolLogo[] = [
   selector: 'logo-marquee',
   template: `
     <div class="marquee-outer">
-      <div class="marquee-track">
+      <div class="marquee-track" #track>
         @for (tool of doubled; track $index) {
           <span class="tool-logo" [attr.aria-hidden]="$index >= tools.length ? 'true' : null">
             <svg viewBox="0 0 24 24" role="img" [class.boost]="tool.boost">
@@ -64,16 +64,6 @@ const TOOLS: ToolLogo[] = [
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
-    /* progressive enhancement: tie the drift to page scroll position, like apple.com sections */
-    @supports (animation-timeline: scroll()) {
-      @media (prefers-reduced-motion: no-preference) {
-        .marquee-track {
-          animation: marquee linear both;
-          animation-timeline: scroll(root);
-          animation-range: 0 100%;
-        }
-      }
-    }
     .tool-logo {
       display: flex; flex-direction: column; align-items: center; gap: 8px;
       flex-shrink: 0;
@@ -96,7 +86,52 @@ const TOOLS: ToolLogo[] = [
     }
   `],
 })
-export class LogoMarquee {
+export class LogoMarquee implements AfterViewInit, OnDestroy {
+  @ViewChild('track') private trackRef!: ElementRef<HTMLElement>;
+
   readonly tools = TOOLS;
   readonly doubled = [...TOOLS, ...TOOLS];
+
+  private halfWidth = 0;
+  private ticking = false;
+  private readonly onScroll = () => this.requestUpdate();
+  private readonly onResize = () => this.measure();
+
+  ngAfterViewInit() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    this.measure();
+    // JS now drives the transform every frame — stop the CSS autoplay loop so they don't fight.
+    this.trackRef.nativeElement.style.animation = 'none';
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onResize);
+    this.update();
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onResize);
+  }
+
+  private measure() {
+    // track renders two copies of the list back to back — one copy's width is the seamless loop length
+    this.halfWidth = this.trackRef.nativeElement.scrollWidth / 2;
+  }
+
+  private requestUpdate() {
+    if (this.ticking) return;
+    this.ticking = true;
+    requestAnimationFrame(() => {
+      this.update();
+      this.ticking = false;
+    });
+  }
+
+  private update() {
+    if (!this.halfWidth) return;
+    // tie the drift directly to page scroll position (not time) — moves whichever
+    // way you scroll, anywhere on the page, like apple.com's scroll-linked sections.
+    const offset = -((window.scrollY * 0.4) % this.halfWidth);
+    this.trackRef.nativeElement.style.transform = `translateX(${offset}px)`;
+  }
 }
