@@ -1,8 +1,11 @@
 <header class="topbar">
   <div class="topbar-inner">
-    <a href="https://www.google.com/maps/search/?api=1&query=40.38,71.78" target="_blank" rel="noopener" class="coords" style="text-decoration:none">
-      40.38°N 71.78°E <span class="dot">●</span> FERGANA, UZ
-    </a>
+    <div class="brand-group">
+      <a routerLink="/" class="brand-name">Kamoliddin Rasulov</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=40.38,71.78" target="_blank" rel="noopener" class="coords" style="text-decoration:none">
+        40.38°N 71.78°E <span class="dot">●</span> FERGANA, UZ <span class="local-time">{{ localTime() }}</span>
+      </a>
+    </div>
     <nav>
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ i18n.t().nav.work }}</a>
       <a routerLink="/about" routerLinkActive="active">{{ i18n.t().nav.about }}</a>

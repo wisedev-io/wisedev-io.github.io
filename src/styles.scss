@@ -98,8 +98,16 @@ h1, h2, h3 { font-family: 'Manrope', sans-serif; letter-spacing: -0.015em; }
   max-width: var(--max); margin: 0 auto; width: 100%;
   display: flex; justify-content: space-between; align-items: center; gap: 12px;
 }
-.topbar .coords { white-space: nowrap; }
+.brand-group { display: flex; flex-direction: column; gap: 3px; }
+.brand-name {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px;
+  color: var(--ink); text-decoration: none;
+}
+.brand-name:hover { color: var(--leaf); }
+.topbar .coords { white-space: nowrap; transition: color 0.2s ease; }
+.topbar .coords:hover { color: var(--ink); }
 .topbar .coords .dot { color: var(--apricot); }
+.topbar .coords .local-time { margin-left: 8px; color: var(--apricot); }
 .topbar nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
 .topbar nav a {
   text-decoration: none; color: var(--slate);
