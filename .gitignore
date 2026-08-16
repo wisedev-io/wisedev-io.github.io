@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.angular/
+backend/contacts.jsonl
+backend/__pycache__/
+backend/.venv/
+*.pyc

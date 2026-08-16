@@ -1,0 +1,15 @@
+# One-click Render deploy config (Render reads this automatically)
+services:
+  - type: web
+    name: portfolio-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: ALLOWED_ORIGIN
+        value: https://wisedev-io.github.io

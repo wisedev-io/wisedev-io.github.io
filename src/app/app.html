@@ -1,0 +1,22 @@
+<header class="topbar">
+  <div class="topbar-inner">
+    <a routerLink="/" class="coords" style="text-decoration:none">
+      40.38°N 71.78°E <span class="dot">●</span> FERGANA, UZ
+    </a>
+    <nav>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ i18n.t().nav.work }}</a>
+      <a routerLink="/about" routerLinkActive="active">{{ i18n.t().nav.about }}</a>
+      <a routerLink="/contact" routerLinkActive="active">{{ i18n.t().nav.contact }}</a>
+      <button class="lang-toggle" (click)="i18n.toggle()" [attr.aria-label]="'Switch language'">
+        @if (i18n.lang() === 'en') { EN / <b>UZ</b> } @else { <b>EN</b> / UZ }
+      </button>
+    </nav>
+  </div>
+</header>
+
+<router-outlet />
+
+<footer class="site">
+  <div>{{ i18n.t().footer.rights }}</div>
+  <div>{{ i18n.t().footer.built }}</div>
+</footer>
