@@ -1,6 +1,6 @@
 import { Injectable, signal, computed } from '@angular/core';
 
-export type Lang = 'en' | 'uz';
+export type Lang = 'en' | 'uz' | 'ru';
 
 const DICT = {
   en: {
@@ -8,7 +8,7 @@ const DICT = {
     hero: {
       title1: 'Practical software,',
       title2: 'built to be used.',
-      lede: 'I\u2019m Kamoliddin Rasulov — a full-stack developer in the Fergana Valley, Uzbekistan. I build and deploy real products for energy auditing, local commerce, and agriculture: Python backends, Angular and mobile frontends, running on real servers for real clients.',
+      lede: 'I’m Kamoliddin Rasulov — a full-stack developer in the Fergana Valley, Uzbekistan. I build and deploy real products for energy auditing, local commerce, and agriculture: Python backends, Angular and mobile frontends, running on real servers for real clients.',
       cta: 'See the work',
       cv: 'Request CV',
       tag: 'Python · Angular · React Native · PostgreSQL',
@@ -26,7 +26,7 @@ const DICT = {
     },
     about: {
       title: 'About me',
-      bio1: 'I\u2019m a self-taught full-stack developer focused on building real products, not tutorial projects. I\u2019ve built and deployed applications using Python, Flask, Angular, JavaScript, React Native and PostgreSQL on Ubuntu servers — including AI-assisted development workflows that let me ship fast and learn under pressure.',
+      bio1: 'I’m a self-taught full-stack developer focused on building real products, not tutorial projects. I’ve built and deployed applications using Python, Flask, Angular, JavaScript, React Native and PostgreSQL on Ubuntu servers — including AI-assisted development workflows that let me ship fast and learn under pressure.',
       bio2: 'Before going deep into engineering, I co-founded an education platform and worked as a project manager translating business requirements into developer tasks. That background means I understand both sides: what clients need, and how to build it.',
       facts: 'Fergana, Uzbekistan · IELTS 6.5 · Available full-time',
       langs: 'English — advanced · Korean — intermediate · Uzbek — native',
@@ -39,19 +39,19 @@ const DICT = {
       cvErr: 'Could not send the request. Please email me directly at',
     },
     contact: {
-      title: 'Have a project or a role in mind? Let\u2019s talk.',
-      sub: 'I\u2019m open to full-time roles (on-site in Uzbekistan or remote) and selected freelance work. The fastest way to reach me is email or the form — it pings my phone instantly.',
+      title: 'Have a project or a role in mind? Let’s talk.',
+      sub: 'I’m open to full-time roles (on-site in Uzbekistan or remote) and selected freelance work. The fastest way to reach me is email or the form — it pings my phone instantly.',
       name: 'Your name',
       email: 'Your email',
       message: 'Message',
       send: 'Send message',
       sending: 'Sending…',
-      ok: 'Message sent — I\u2019ll reply soon. Rahmat!',
+      ok: 'Message sent — I’ll reply soon. Rahmat!',
       err: 'Could not reach the server. Please email me directly:',
-      cvTitle: 'Requesting the CV \u2014 just add your email below.',
-      cvSub: 'I\u2019ve filled in a quick message for you. Drop your email in and hit send \u2014 I\u2019ll get the CV over to you personally.',
-      cvMessage: 'Hi Kamoliddin, I checked out your portfolio and I\u2019d like to request a copy of your CV. Could you send it over? Thanks!',
-      cvEmailHint: '\u2193 I\u2019ll send the CV here',
+      cvTitle: 'Requesting the CV — just add your email below.',
+      cvSub: 'I’ve filled in a quick message for you. Drop your email in and hit send — I’ll get the CV over to you personally.',
+      cvMessage: 'Hi Kamoliddin, I checked out your portfolio and I’d like to request a copy of your CV. Could you send it over? Thanks!',
+      cvEmailHint: '↓ I’ll send the CV here',
     },
     footer: { rights: '© 2026 Kamoliddin Rasulov', built: 'Built with Angular + Flask' },
   },
@@ -60,13 +60,13 @@ const DICT = {
     hero: {
       title1: 'Amaliy dasturlar,',
       title2: 'haqiqiy foydalanish uchun.',
-      lede: 'Men Kamoliddin Rasulov — Farg\u2018ona vodiysida yashovchi full-stack dasturchiman. Energiya auditi, mahalliy savdo va qishloq xo\u2018jaligi uchun haqiqiy mahsulotlar yarataman: Python backend, Angular va mobil frontend — real serverlarda, real mijozlar uchun.',
-      cta: 'Ishlarni ko\u2018rish',
-      cv: 'CV so\u2018rash',
+      lede: 'Men Kamoliddin Rasulov — Farg‘ona vodiysida yashovchi full-stack dasturchiman. Energiya auditi, mahalliy savdo va qishloq xo‘jaligi uchun haqiqiy mahsulotlar yarataman: Python backend, Angular va mobil frontend — real serverlarda, real mijozlar uchun.',
+      cta: 'Ishlarni ko‘rish',
+      cv: 'CV so‘rash',
       tag: 'Python · Angular · React Native · PostgreSQL',
     },
     sections: { featured: 'Tanlangan ishlar', experience: 'Ish tajribasi', skills: 'Texnologiyalar' },
-    more: 'Batafsil o\u2018qish →',
+    more: 'Batafsil o‘qish →',
     caseStudy: {
       context: 'Loyiha haqida',
       role: 'Mening vazifam',
@@ -78,34 +78,86 @@ const DICT = {
     },
     about: {
       title: 'Men haqimda',
-      bio1: 'Men mustaqil o\u2018rgangan full-stack dasturchiman — darslik loyihalari emas, haqiqiy mahsulotlar yarataman. Python, Flask, Angular, JavaScript, React Native va PostgreSQL yordamida ilovalar qurib, Ubuntu serverlarga joylashtirganman. AI yordamidagi ish jarayonlari tez ishlash va bosim ostida o\u2018rganish imkonini beradi.',
-      bio2: 'Dasturlashga chuqur kirishishdan oldin ta\u2019lim platformasiga asos solganman va loyiha menejeri sifatida biznes talablarini dasturchi vazifalariga aylantirganman. Shu tufayli ikkala tomonni ham tushunaman: mijozga nima kerak va uni qanday qurish kerak.',
-      facts: 'Farg\u2018ona, O\u2018zbekiston · IELTS 6.5 · To\u2018liq stavkada ishlashga tayyor',
-      langs: 'Ingliz — yuqori daraja · Koreys — o\u2018rta daraja · O\u2018zbek — ona tili',
+      bio1: 'Men mustaqil o‘rgangan full-stack dasturchiman — darslik loyihalari emas, haqiqiy mahsulotlar yarataman. Python, Flask, Angular, JavaScript, React Native va PostgreSQL yordamida ilovalar qurib, Ubuntu serverlarga joylashtirganman. AI yordamidagi ish jarayonlari tez ishlash va bosim ostida o‘rganish imkonini beradi.',
+      bio2: 'Dasturlashga chuqur kirishishdan oldin ta’lim platformasiga asos solganman va loyiha menejeri sifatida biznes talablarini dasturchi vazifalariga aylantirganman. Shu tufayli ikkala tomonni ham tushunaman: mijozga nima kerak va uni qanday qurish kerak.',
+      facts: 'Farg‘ona, O‘zbekiston · IELTS 6.5 · To‘liq stavkada ishlashga tayyor',
+      langs: 'Ingliz — yuqori daraja · Koreys — o‘rta daraja · O‘zbek — ona tili',
       expTitle: 'Ish tajribasi',
-      eduTitle: 'Ta\u2019lim',
-      edu: 'BBA, Sejong universiteti (AACSB akkreditatsiyasi), 2017–2022. Fanlar: Python, ma\u2019lumotlar tuzilmalari va algoritmlar, MIS, dasturiy ta\u2019minot ishlab chiqish, biznes-tahlil.',
-      cv: 'CV so\u2018rash',
-      cvSending: 'So\u2018rov yuborilmoqda\u2026',
-      cvOk: 'Qabul qildim \u2014 tez orada CV\u2019ni emailingizga yuboraman. Menga to\u2018g\u2018ridan-to\u2018g\u2018ri ham yozishingiz mumkin:',
-      cvErr: 'So\u2018rovni yuborib bo\u2018lmadi. Iltimos, to\u2018g\u2018ridan-to\u2018g\u2018ri email yozing:',
+      eduTitle: 'Ta’lim',
+      edu: 'BBA, Sejong universiteti (AACSB akkreditatsiyasi), 2017–2022. Fanlar: Python, ma’lumotlar tuzilmalari va algoritmlar, MIS, dasturiy ta’minot ishlab chiqish, biznes-tahlil.',
+      cv: 'CV so‘rash',
+      cvSending: 'So‘rov yuborilmoqda…',
+      cvOk: 'Qabul qildim — tez orada CV’ni emailingizga yuboraman. Menga to‘g‘ridan-to‘g‘ri ham yozishingiz mumkin:',
+      cvErr: 'So‘rovni yuborib bo‘lmadi. Iltimos, to‘g‘ridan-to‘g‘ri email yozing:',
     },
     contact: {
-      title: 'Loyiha yoki ish taklifingiz bormi? Bog\u2018laning.',
-      sub: 'To\u2018liq stavkali ishlarga (O\u2018zbekistonda yoki masofaviy) va tanlangan frilans loyihalarga ochiqman. Eng tez yo\u2018l — email yoki quyidagi forma: xabar darhol telefonimga keladi.',
+      title: 'Loyiha yoki ish taklifingiz bormi? Bog‘laning.',
+      sub: 'To‘liq stavkali ishlarga (O‘zbekistonda yoki masofaviy) va tanlangan frilans loyihalarga ochiqman. Eng tez yo‘l — email yoki quyidagi forma: xabar darhol telefonimga keladi.',
       name: 'Ismingiz',
       email: 'Emailingiz',
       message: 'Xabar',
       send: 'Xabar yuborish',
       sending: 'Yuborilmoqda…',
       ok: 'Xabar yuborildi — tez orada javob beraman. Rahmat!',
-      err: 'Serverga ulanib bo\u2018lmadi. Iltimos, to\u2018g\u2018ridan-to\u2018g\u2018ri email yozing:',
-      cvTitle: 'CV so\u2018ralmoqda \u2014 quyida emailingizni qoldiring.',
-      cvSub: 'Siz uchun xabarni oldindan yozib qo\u2018ydim. Emailingizni kiriting va yuboring \u2014 CV\u2019ni shaxsan o\u2018zim yuboraman.',
-      cvMessage: 'Salom Kamoliddin, portfolioingizni ko\u2018rib chiqdim va CV nusxangizni so\u2018ramoqchiman. Yuborib yubora olasizmi? Rahmat!',
-      cvEmailHint: '\u2193 CV\u2019ni shu yerga yuboraman',
+      err: 'Serverga ulanib bo‘lmadi. Iltimos, to‘g‘ridan-to‘g‘ri email yozing:',
+      cvTitle: 'CV so‘ralmoqda — quyida emailingizni qoldiring.',
+      cvSub: 'Siz uchun xabarni oldindan yozib qo‘ydim. Emailingizni kiriting va yuboring — CV’ni shaxsan o‘zim yuboraman.',
+      cvMessage: 'Salom Kamoliddin, portfolioingizni ko‘rib chiqdim va CV nusxangizni so‘ramoqchiman. Yuborib yubora olasizmi? Rahmat!',
+      cvEmailHint: '↓ CV’ni shu yerga yuboraman',
     },
     footer: { rights: '© 2026 Kamoliddin Rasulov', built: 'Angular + Flask bilan qurilgan' },
+  },
+  ru: {
+    nav: { work: 'Работы', about: 'Обо мне', contact: 'Контакты' },
+    hero: {
+      title1: 'Практичный софт,',
+      title2: 'который реально используют.',
+      lede: 'Я Камолиддин Расулов — full-stack разработчик из Ферганской долины, Узбекистан. Я создаю и разворачиваю реальные продукты для энергоаудита, локальной торговли и сельского хозяйства: backend на Python, frontend на Angular и мобильных платформах — на настоящих серверах, для настоящих клиентов.',
+      cta: 'Смотреть работы',
+      cv: 'Запросить резюме',
+      tag: 'Python · Angular · React Native · PostgreSQL',
+    },
+    sections: { featured: 'Избранные проекты', experience: 'Опыт работы', skills: 'Стек технологий' },
+    more: 'Читать кейс →',
+    caseStudy: {
+      context: 'Контекст',
+      role: 'Моя роль',
+      challenges: 'Технические сложности',
+      outcome: 'Результат',
+      stack: 'Стек',
+      back: '← Все проекты',
+      next: 'Следующий кейс →',
+    },
+    about: {
+      title: 'Обо мне',
+      bio1: 'Я full-stack разработчик-самоучка, который создаёт реальные продукты, а не учебные проекты. Я разрабатывал и разворачивал приложения на Python, Flask, Angular, JavaScript, React Native и PostgreSQL на серверах Ubuntu — включая рабочие процессы с использованием ИИ, которые позволяют быстро выпускать продукт и учиться в условиях сжатых сроков.',
+      bio2: 'Прежде чем полностью погрузиться в разработку, я стал сооснователем образовательной платформы и работал проект-менеджером, переводя бизнес-требования в задачи для разработчиков. Благодаря этому опыту я понимаю обе стороны: что нужно клиенту и как это реализовать.',
+      facts: 'Фергана, Узбекистан · IELTS 6.5 · Готов к полной занятости',
+      langs: 'Английский — продвинутый · Корейский — средний · Узбекский — родной',
+      expTitle: 'Опыт работы',
+      eduTitle: 'Образование',
+      edu: 'BBA, Университет Сечжон (аккредитация AACSB), 2017–2022. Дисциплины: Python, структуры данных и алгоритмы, MIS, разработка ПО, бизнес-аналитика.',
+      cv: 'Запросить резюме',
+      cvSending: 'Отправка запроса…',
+      cvOk: 'Принято — скоро отправлю резюме вам на почту. Также можете написать мне напрямую:',
+      cvErr: 'Не удалось отправить запрос. Пожалуйста, напишите мне напрямую:',
+    },
+    contact: {
+      title: 'Есть проект или вакансия на примете? Давайте обсудим.',
+      sub: 'Открыт к предложениям full-time (в Узбекистане или удалённо), а также к отдельным фриланс-проектам. Быстрее всего связаться со мной — по email или через форму: сообщение сразу приходит мне на телефон.',
+      name: 'Ваше имя',
+      email: 'Ваш email',
+      message: 'Сообщение',
+      send: 'Отправить сообщение',
+      sending: 'Отправка…',
+      ok: 'Сообщение отправлено — скоро отвечу. Рахмат!',
+      err: 'Не удалось связаться с сервером. Пожалуйста, напишите мне напрямую:',
+      cvTitle: 'Запрос резюме — просто укажите свой email ниже.',
+      cvSub: 'Я уже заполнил сообщение за вас. Впишите свой email и нажмите отправить — я лично пришлю вам резюме.',
+      cvMessage: 'Привет, Камолиддин! Я посмотрел ваше портфолио и хотел бы получить копию резюме. Не могли бы вы его прислать? Спасибо!',
+      cvEmailHint: '↓ Отправлю резюме сюда',
+    },
+    footer: { rights: '© 2026 Kamoliddin Rasulov', built: 'Создано на Angular + Flask' },
   },
 } as const;
 
@@ -114,7 +166,7 @@ export class I18n {
   readonly lang = signal<Lang>('en');
   readonly t = computed(() => DICT[this.lang()]);
 
-  toggle() {
-    this.lang.update(l => (l === 'en' ? 'uz' : 'en'));
+  setLang(l: Lang) {
+    this.lang.set(l);
   }
 }

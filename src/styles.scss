@@ -116,12 +116,18 @@ h1, h2, h3 { font-family: 'Manrope', sans-serif; letter-spacing: -0.015em; }
 .topbar nav a:hover { color: var(--ink); }
 .topbar nav a.active { color: var(--ink); background: var(--apricot-soft); }
 .lang-toggle {
+  display: flex; align-items: center; gap: 4px;
   font-family: inherit; font-size: 12.5px;
   border: 1px solid var(--line-strong); background: var(--card);
-  border-radius: 999px; padding: 5px 12px; cursor: pointer;
-  color: var(--ink); margin-left: 10px;
+  border-radius: 999px; padding: 5px 12px;
+  margin-left: 10px;
 }
-.lang-toggle b { color: var(--apricot); font-weight: 500; }
+.lang-toggle button {
+  font: inherit; background: none; border: none; cursor: pointer;
+  color: var(--ink); padding: 0;
+}
+.lang-toggle button.active { color: var(--apricot); font-weight: 500; }
+.lang-toggle .sep { color: var(--slate); }
 
 /* ============ Hero ============ */
 .hero {

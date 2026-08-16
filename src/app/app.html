@@ -3,16 +3,20 @@
     <div class="brand-group">
       <a routerLink="/" class="brand-name">Kamoliddin Rasulov</a>
       <a href="https://www.google.com/maps/search/?api=1&query=40.38,71.78" target="_blank" rel="noopener" class="coords" style="text-decoration:none">
-        40.38°N 71.78°E <span class="dot">●</span> FERGANA, UZ <span class="local-time">{{ localTime() }}</span>
+        <span class="dot">●</span> FERGANA, UZBEKISTAN <span class="local-time">{{ localTime() }}</span>
       </a>
     </div>
     <nav>
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ i18n.t().nav.work }}</a>
       <a routerLink="/about" routerLinkActive="active">{{ i18n.t().nav.about }}</a>
       <a routerLink="/contact" routerLinkActive="active">{{ i18n.t().nav.contact }}</a>
-      <button class="lang-toggle" (click)="i18n.toggle()" [attr.aria-label]="'Switch language'">
-        @if (i18n.lang() === 'en') { EN / <b>UZ</b> } @else { <b>EN</b> / UZ }
-      </button>
+      <div class="lang-toggle" role="group" aria-label="Switch language">
+        <button type="button" [class.active]="i18n.lang() === 'en'" (click)="i18n.setLang('en')">EN</button>
+        <span class="sep">/</span>
+        <button type="button" [class.active]="i18n.lang() === 'uz'" (click)="i18n.setLang('uz')">UZ</button>
+        <span class="sep">/</span>
+        <button type="button" [class.active]="i18n.lang() === 'ru'" (click)="i18n.setLang('ru')">RU</button>
+      </div>
     </nav>
   </div>
 </header>
