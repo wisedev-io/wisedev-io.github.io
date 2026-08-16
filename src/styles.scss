@@ -14,8 +14,9 @@
   --line: rgba(242, 241, 236, 0.10);
   --line-strong: rgba(242, 241, 236, 0.18);
   --shadow: 0 20px 46px rgba(0, 0, 0, 0.38);
-  --max: 1060px;
+  --max: 1320px;
   --radius: 12px;
+  --header-h: 68px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -50,6 +51,9 @@ h1, h2, h3 { font-family: 'Manrope', sans-serif; letter-spacing: -0.015em; }
   color: var(--leaf);
   display: flex; align-items: center; gap: 12px;
   margin-bottom: 26px;
+  position: sticky; top: var(--header-h); z-index: 10;
+  padding: 14px 0; margin-top: -14px;
+  background: var(--bg);
 }
 .eyebrow::after { content: ""; height: 1px; flex: 1; background: var(--line); }
 
@@ -98,9 +102,9 @@ h1, h2, h3 { font-family: 'Manrope', sans-serif; letter-spacing: -0.015em; }
   max-width: var(--max); margin: 0 auto; width: 100%;
   display: flex; justify-content: space-between; align-items: center; gap: 12px;
 }
-.brand-group { display: flex; flex-direction: column; gap: 3px; }
+.brand-group { display: flex; flex-direction: row; align-items: center; gap: 22px; flex-wrap: wrap; }
 .brand-name {
-  font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px;
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px;
   color: var(--ink); text-decoration: none;
 }
 .brand-name:hover { color: var(--leaf); }
